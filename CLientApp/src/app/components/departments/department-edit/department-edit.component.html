@@ -1,0 +1,22 @@
+<p>department-edit works!</p>
+<form class="form-container" [formGroup]="departmentForm" (submit)="update()">
+  <div class="f-w">
+    <h3>Update Department</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Department Name</mat-label>
+    <input matInput formControlName="departmentName" />
+    <mat-error *ngIf="f['departmentName'].touched && f['departmentName'].errors">Department Department required!!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Location</mat-label>
+    <input matInput formControlName="location" />
+    <mat-error *ngIf="f['location'].touched && f['location'].errors">Location required!!</mat-error>
+  </mat-form-field>
+  <div class="f-w">
+    <button [disabled]="departmentForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Update</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/departments']">Back to list</a>
+  </div>
+</form>

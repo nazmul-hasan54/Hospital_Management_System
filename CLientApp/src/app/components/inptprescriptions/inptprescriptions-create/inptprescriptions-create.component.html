@@ -1,0 +1,127 @@
+<form class="form-container" [formGroup]="inPtPrescriptionForm" (ngSubmit)="insert()">
+    <div class="f-w">
+      <h3 class="display-4 primary" style="margin-left: 10%;">{{pagetitle}}</h3>
+    </div>
+    <mat-form-field class="f-w" appearance="fill">
+      <mat-label >Admission</mat-label>
+      <mat-select formControlName="addmisonId">
+        <mat-option *ngFor="let item of admissionList" [value]="item.admissionId">{{item.patientName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="f-w" appearance="fill">
+      <mat-label>Prescription Date</mat-label>
+      <input matInput formControlName="prescriptionDate" [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <mat-form-field class="f-w" appearance="fill">
+      <mat-label>Instruction</mat-label>
+      <input matInput formControlName="instruction" />
+      <mat-icon matSuffix>directions</mat-icon>
+    </mat-form-field>
+
+    <div class="f-w">
+      <mat-checkbox style="margin-left: 10%;" formControlName="isReleased">Is Relase</mat-checkbox>
+    </div>
+    <!-- <div class="f-w">
+      <button [disabled]="admissionForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+    </div> -->
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered table-striped table-hover" style="width: 80%; margin-left: 10%; margin-top: 2%;" formArrayName="pntMedicines">
+          <thead class="thead-dark">
+            <tr class="text-center">
+              <th>SN</th>
+              <th>In Pt PrescriptionId</th>
+              <th>Medicine List</th>
+              <th>Quantity</th>
+              <th>Doges</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of pntMedicines.controls; let i = index" [formGroupName]="i">
+              <td>{{i+1}}</td>
+              <td>
+                <input type="number" class="form-control" formControlName="inPtPrescriptionId" />
+              </td>
+              <td>
+                <select class="form-control" formControlName="medicineListId">
+                  <option selected>Select...</option>
+                  <option *ngFor="let item of medicineList" [value]="item.medicineListId">{{item.medicineName}}</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" class="form-control" formControlName="quantity" />
+              </td>
+              <td>
+                <input type="text" class="form-control" formControlName="doges" />
+              </td>
+              <td>
+                <a (click)="removePntMedice(i)" class="btn btn-danger">Remove</a>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6">
+                <a (click)="addPntMedicine()" class="btn btn-success">[+]</a>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Patient Test List-->
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-bordered table-striped table-hover" style="width: 80%; margin-left: 10%; margin-top: 2%;" formArrayName="patientTests">
+          <thead class="thead-dark">
+            <tr class="text-center">
+              <th>SN</th>
+              <th>In Pt PrescriptionId</th>
+              <th>Test list</th>
+              <th>Result</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of pntTestLists.controls; let i = index" [formGroupName]="i">
+              <td>{{i+1}}</td>
+              <td>
+                <input type="number" class="form-control" formControlName="inPtPrescriptionId" />
+              </td>
+              <td>
+                <select class="form-control" formControlName="testlistId">
+                  <option selected>Select...</option>
+                  <option *ngFor="let item of testList" [value]="item.testlistId">{{item.testName}}</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" class="form-control" formControlName="result" />
+              </td>
+              <td>
+                <a (click)="removePntTestList(i)" class="btn btn-danger">Remove</a>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6">
+                <a (click)="addPntTestList()" class="btn btn-success">[+]</a>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+      
+    <div class="f-w" style="margin-left: 10%; margin-top: 2px;">
+      <a class="btn btn-secondary" mat-flat-button [routerLink]="['/inptprescriptions']">Back to list </a> |
+      <button type="submit" class="btn btn-success">Save</button> 
+    </div>
+  </form>
+  

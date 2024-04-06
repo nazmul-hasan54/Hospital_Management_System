@@ -1,0 +1,46 @@
+<p>schedules works!</p>
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title class="card-title">
+      Schedule
+    </mat-card-title>
+    <!--<mat-card-subtitle class="card-subtitle">
+      Bed
+    </mat-card-subtitle>-->
+    <span class="filter"></span>
+    <div class="d-flex justify-content-end">
+      <a [routerLink]="['/schedules-create']" mat-mini-fab color="primary"><mat-icon>add</mat-icon></a>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+        <div class="table-container" style="background-color:aquamarine">
+          <mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="scheduleDays">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Schedule Days</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.scheduleDays}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="scheduleTime">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Schedule Time</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.scheduleTime}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="doctorsId">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Doctor</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{getDoctorName(element.doctorsId)}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <button mat-icon-button [routerLink]="['/schedules-edit',element.scheduleId]"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button color="warn" (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+            <mat-row *matRowDef="let row; columns:columnList"></mat-row>
+          </mat-table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons>
+          </mat-paginator>
+        </div>
+  </mat-card-content>
+</mat-card>

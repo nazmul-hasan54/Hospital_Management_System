@@ -1,0 +1,12 @@
+/*.example-large-box {
+  height: 300px;
+  width: 300px;
+ */
+/*}*/
+.filter {
+  flex: 1 1 auto;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}

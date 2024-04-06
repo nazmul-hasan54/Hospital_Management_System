@@ -1,0 +1,58 @@
+<p>appoinment-edit works!</p>
+<div class="container">
+  <form class="form-container" [formGroup]="appoinmentForm" (submit)="update()" >
+    <div class="f-w">
+      <h3>Create new Appoinment</h3>
+    </div>
+    <mat-form-field class="f-w" appearance="fill">
+      <mat-label>Patient Name</mat-label>
+      <input matInput formControlName="patientName" />
+      <mat-icon matSuffix>person_pin</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="f-w" appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput formControlName="age" />
+      <mat-icon matSuffix>timer</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="f-w" appearance="fill">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" />
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="f-w" appearance="fill" color="accent">
+      <mat-label>Appoint Date</mat-label>
+      <input matInput formControlName="appointDate" [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="f-w" appearance="fill">
+      <mat-label>problem</mat-label>
+      <input matInput formControlName="problem" />
+      <mat-icon matSuffix>directions</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="f-w" appearance="fill">
+      <mat-label>SerialNo</mat-label>
+      <input matInput formControlName="serialNo" />
+      <mat-icon matSuffix>add_alert</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="f-w" appearance="fill">
+      <mat-label>Doctor Name</mat-label>
+      <mat-select formControlName="doctorsId">
+        <mat-option value="">None</mat-option>
+        <mat-option *ngFor="let c of doctor" [value]="c.doctorsId">
+          {{c.doctorName}}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>card_travel</mat-icon>
+    </mat-form-field>
+
+    <div class="f-w">
+      <button [disabled]="appoinmentForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Update</button>
+    </div>
+    <div class="f-w">
+      <a mat-flat-button [routerLink]="['/appoinment']">Back to list</a>
+    </div>
+  </form>
+
+
+</div>

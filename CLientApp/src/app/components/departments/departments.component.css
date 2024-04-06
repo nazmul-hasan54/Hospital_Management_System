@@ -1,0 +1,16 @@
+.card-container {
+  box-sizing: border-box;
+  width: 900px;
+  border:inherit 15px #ffd800;
+  margin: 25px auto 10px auto;
+}
+
+.table-container {
+  box-sizing: border-box;
+  width: calc(100%-20px);
+  margin: 0 auto;
+}
+
+.filter {
+  flex: 1 1 auto;
+}

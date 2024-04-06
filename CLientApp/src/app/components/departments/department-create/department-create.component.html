@@ -1,0 +1,20 @@
+
+<form class="form-container" [formGroup]="departmentForm" (submit)="insert()">
+  <div class="f-w">
+    <h3>Create new Departemnt</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Department Name</mat-label>
+    <input matInput formControlName="departmentName" />
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Location</mat-label>
+    <input matInput formControlName="location" />
+  </mat-form-field>
+  <div class="f-w">
+    <button [disabled]="departmentForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/departments']">Back to list</a>
+  </div>
+</form>

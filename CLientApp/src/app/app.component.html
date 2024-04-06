@@ -1,0 +1,75 @@
+<!--<div class="main-container">
+  <mat-toolbar color=""style="color:#ec80be" class="main-toolbar">
+    <mat-toolbar-row>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1>HMS</h1>
+      <span class="menu-spacer"></span>
+      <a mat-button [routerLink]="['home']">Home</a>
+      <a mat-button [routerLink]="['admission']">Admission</a>
+      <a mat-button [routerLink]="['appoinment']">Appoinment</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>-->
+<mat-sidenav-container class="sidenav-container fixed-top" >
+  <mat-sidenav #drawer class="sidenav" fixedInViewPort [opened]="false">
+    <mat-toolbar><mat-icon>local_hospital</mat-icon>  &nbsp;HMS</mat-toolbar>
+    <mat-divider></mat-divider>
+    <mat-nav-list style="margin-top:0;padding-top:0; color:#ba3636">
+      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/home']"><mat-icon style="margin-right:15px">home</mat-icon> Home</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/admission']"><mat-icon>create_new_folder</mat-icon>&nbsp; Admission</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/appoinment']"><mat-icon style="margin-right:10px">rate_review</mat-icon>&nbsp; Appoinment</a>
+
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/departments']"><mat-icon style="margin-right:15px">business_center</mat-icon> Department</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/OutPtPresccript'] "><mat-icon style="margin-right:15px;">local_airport</mat-icon> Out Pt Presccript</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/doctors'] "><mat-icon style="margin-right:15px;color:brown">card_travel</mat-icon>Doctor</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/beds'] "><mat-icon style="margin-right:15px;">bed</mat-icon>Bed</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/rooms'] "><mat-icon style="margin-right:15px;">local_hotel</mat-icon>Room</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/'] "><mat-icon style="margin-right:15px;">local_atm</mat-icon>Payment</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/designations'] "><mat-icon style="margin-right:15px;">school</mat-icon>Designation</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/inptprescriptions'] "><mat-icon style="margin-right:15px;">flight_takeoff</mat-icon>in pt precription</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/facilities'] "><mat-icon style="margin-right:15px;">map</mat-icon>Facility</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/hospitals'] "><mat-icon style="margin-right:15px;">local_hospital</mat-icon>Hospital</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/testlists'] "><mat-icon style="margin-right:15px;">map</mat-icon>Test List</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/medicinelists'] "><mat-icon style="margin-right:15px;">map</mat-icon>Medicine List</a>
+      <mat-divider></mat-divider>
+      
+        <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/schedules'] "><mat-icon style="margin-right:15px;">map</mat-icon>Schedule</a>
+        
+        <mat-divider></mat-divider>
+        <!--<a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/'] "><mat-icon style="margin-right:15px;"></mat-icon>Out Pt Prescript</a>-->
+        <mat-divider></mat-divider>
+        <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/'] "><mat-icon style="margin-right:15px;">map</mat-icon>Patient List</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item (click)="drawer.toggle()" class="text-hover" [routerLink]="['/'] "><mat-icon style="margin-right:15px;">map</mat-icon>Patient Medicine</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="warn">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="hover" click="">Hospital Management</span>
+    </mat-toolbar>
+    <div class="top-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

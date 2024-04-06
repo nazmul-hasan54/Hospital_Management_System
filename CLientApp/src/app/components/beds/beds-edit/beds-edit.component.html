@@ -1,0 +1,38 @@
+<p>beds-edit works!</p>
+<form class="form-container" [formGroup]="bedForm" (ngSubmit)="update()">
+  <div class="f-w">
+    <h3>Add new bed</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Bed No</mat-label>
+    <input matInput formControlName="bedNo" />
+    <mat-error *ngIf="f['bedNo'].touched && f['bedNo'].errors">Bed no required!!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Room No</mat-label>
+    <mat-select formControlName="roomId">
+      <mat-option *ngFor="let r of room" [value]="r.roomId">
+        {{r.roomNo}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="f['roomId'].touched && f['roomId'].errors">Department is required!!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Bed Type</mat-label>
+    <input matInput formControlName="bedType" />
+    <mat-error *ngIf="f['bedType'].touched && f['bedType'].errors">Room type required!!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Bed Charge</mat-label>
+    <input matInput formControlName="bedCharge" />
+    <mat-error *ngIf="f['bedCharge'].touched && f['bedCharge'].errors">Room type required!!</mat-error>
+  </mat-form-field>
+  <div class="f-w">
+    <button [disabled]="bedForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Update</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/beds']">Back to list</a>
+  </div>
+</form>
+
+

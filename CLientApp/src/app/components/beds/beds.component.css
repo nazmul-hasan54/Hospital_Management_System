@@ -1,0 +1,8 @@
+.table-container {
+  font-size: 14px;
+  width: 100%;
+}
+
+.filter {
+  flex: 1 1 auto;
+}

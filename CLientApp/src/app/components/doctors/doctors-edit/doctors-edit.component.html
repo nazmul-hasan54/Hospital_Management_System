@@ -1,0 +1,47 @@
+<p>doctors-edit works!</p>
+<form class="form-container" [formGroup]="doctorsForm" (submit)="update()">
+  <div class="f-w">
+    <h3>Update  Doctors</h3>
+  </div>
+
+  <mat-form-field class="f-w" appearance="fill" >
+    <mat-label>Doctor name</mat-label>
+    <input matInput formControlName="doctorName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="f-w">
+    <mat-label>Department</mat-label>
+    <mat-select formControlName="departmentId">
+      <mat-option value="">Choose one</mat-option>
+      <mat-option *ngFor="let d of departments" [value]="d.departmentId">
+        {{d.departmentName}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="f['departmentId'].touched && f['departmentId'].errors">department name required!!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="f-w">
+    <mat-label>Designation</mat-label>
+    <mat-select formControlName="designationId">
+      <mat-option value="">Choose one</mat-option>
+      <mat-option *ngFor="let di of designation" [value]="di.designationId">
+        {{di.desigRank}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="f['designationId'].touched && f['designationId'].errors">designation name required!!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Visit Fee</mat-label>
+    <input matInput formControlName="visitFee">
+  </mat-form-field>
+
+  <div class="f-w">
+    <button [disabled]="doctorsForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon>Update</button>
+  </div>
+
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/doctors']">Back to list</a>
+  </div>
+
+</form>

@@ -1,0 +1,20 @@
+<p>testlist-create works!</p>
+<form class="form-container" [formGroup]="testListtForm" (submit)="insert()">
+  <div class="f-w">
+    <h3>Create new Test list</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Test Name</mat-label>
+    <input matInput formControlName="testName" />
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" />
+  </mat-form-field>
+  <div class="f-w">
+    <button [disabled]="testListtForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/testlists']">Back to list</a>
+  </div>
+</form>

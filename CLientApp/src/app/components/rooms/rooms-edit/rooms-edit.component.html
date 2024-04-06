@@ -1,0 +1,31 @@
+<p>rooms-edit works!</p>
+<form class="form-container" [formGroup]="roomForm" (ngSubmit)="update()">
+  <div class="f-w">
+    <h3>Add new room</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Room No</mat-label>
+    <input matInput formControlName="roomNo" />
+    <mat-error *ngIf="f['roomNo'].touched && f['roomNo'].errors">Room no required!!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Department</mat-label>
+    <mat-select formControlName="departmentId">
+      <mat-option *ngFor="let d of department" [value]="d.departmentId">
+        {{d.departmentName}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="f['departmentId'].touched && f['departmentId'].errors">Department is required!!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Room Type</mat-label>
+    <input matInput formControlName="roomType" />
+    <mat-error *ngIf="f['roomType'].touched && f['roomType'].errors">Room type required!!</mat-error>
+  </mat-form-field>
+  <div class="f-w">
+    <button [disabled]="roomForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Update</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/rooms']">Back to list</a>
+  </div>
+</form>

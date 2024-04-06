@@ -1,0 +1,24 @@
+<p>medicinelists-edit works!</p>
+<form class="form-container" [formGroup]="medicineForm" (submit)="update()">
+  <div class="f-w">
+    <h3>Update medicine</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Medicine Name</mat-label>
+    <input matInput formControlName="medicineName" />
+    <!--<mat-error *ngIf="f.cartoonName.touched && f.cartoonName.errors">Cartoon name required!!</mat-error>-->
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" />
+    <!--<mat-error *ngIf="f.producer.touched && f.producer.errors">producer required!!</mat-error>-->
+  </mat-form-field>
+  <div class="f-w">
+    <button [disabled]="medicineForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Update</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/medicinelists']">Back to list</a>
+  </div>
+</form>
+
+

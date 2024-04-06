@@ -1,0 +1,85 @@
+<p>admission-create works!</p>
+<form class="form-container" [formGroup]="admissionForm" (submit)="insert()">
+  <div class="f-w">
+    <h3 class="display-4 primary" >Create new Admission</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Patient Name</mat-label>
+    <input matInput formControlName="patientName" />
+    <mat-icon matSuffix>person_pin</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Age</mat-label>
+    <input matInput formControlName="age" />
+    <mat-icon matSuffix>timer</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>phone</mat-label>
+    <input matInput formControlName="phone" />
+    <mat-icon matSuffix>phone</mat-icon>
+    <mat-hint>Include area code</mat-hint>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Admission Date</mat-label>
+    <input matInput formControlName="addmissionDate" [matDatepicker]="picker" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+    <mat-icon matSuffix>mail</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Address</mat-label>
+    <textarea matInput formControlName="address" ></textarea>
+    <!--<input matInput formControlName="address" />-->
+    <mat-icon matSuffix>place</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Problem</mat-label>
+    <input matInput formControlName="problem" />
+    <mat-icon matSuffix>directions</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Doctor Name</mat-label>
+    <mat-select formControlName="doctorsId">
+      <mat-option value="">None</mat-option>
+      <mat-option *ngFor="let c of doctors" [value]="c.doctorsId">
+        {{c.doctorName}}
+      </mat-option>
+    </mat-select>
+    <mat-icon matSuffix>card_travel</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Bed No</mat-label>
+    <mat-select formControlName="bedId">
+      <mat-option value="">None</mat-option>
+      <mat-option *ngFor="let c of beds" [value]="c.bedId">
+        {{c.bedNo}}
+      </mat-option>
+    </mat-select>
+    <mat-icon matSuffix>bed</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Out Pt No</mat-label>
+    <mat-select formControlName="outPtPresccriptId">
+      <!--<mat-option value="">None</mat-option>-->
+      <mat-option *ngFor="let c of outPtPresccripts" [value]="c.appoinmentId">
+        {{c.appoinmentId}}
+      </mat-option>
+    </mat-select>
+    <mat-icon matSuffix>local_airport</mat-icon>
+  </mat-form-field>
+  <div class="f-w">
+    <mat-checkbox style="margin:0 10px 15px 0;" formControlName="isRelase">Is Relase</mat-checkbox>
+  </div>
+  <div class="f-w">
+    <button [disabled]="admissionForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/admission']">Back to list </a>
+    
+  </div>
+</form>

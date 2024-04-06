@@ -1,0 +1,63 @@
+
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title class="card-title">
+      Outptpresccript
+    </mat-card-title>
+    <mat-card-subtitle class="card-subtitle">
+      Outptpresccript for Patient
+    </mat-card-subtitle>
+    <span class="filter"></span>
+    <a [routerLink]="['/OutPtPresccript-create']" mat-mini-fab color="primary"><mat-icon>add</mat-icon></a>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <div class="table-container table-hover mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.outptPresccriptId}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="medicineName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Medicine Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.medicineName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="testName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Test Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.testName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="instruction">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Instruction</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.instruction}}</mat-cell>
+        </ng-container>
+        <div>
+          <ng-container matColumnDef="admitStatus">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Admit Status</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.admitStatus}}</mat-cell>
+          </ng-container>
+        </div>
+        <ng-container matColumnDef="appoinmentId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Appoinment Id</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{getAppoinment(element.appoinmentId)}}</mat-cell>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element"> 
+            <button mat-icon-button [routerLink]="['/OutPtPresccript-edit',element.outptPresccriptId]"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:columnList"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

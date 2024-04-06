@@ -1,0 +1,17 @@
+<p>designation-edit works!</p>
+<form class="form-container" [formGroup]="designationForm" (submit)="update()">
+  <div class="f-w">
+    <h3>Update new Designation</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Desig Rank </mat-label>
+    <input matInput formControlName="desigRank" />
+  </mat-form-field>
+
+  <div class="f-w">
+    <button [disabled]="designationForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/designations']">Back to list</a>
+  </div>
+</form>

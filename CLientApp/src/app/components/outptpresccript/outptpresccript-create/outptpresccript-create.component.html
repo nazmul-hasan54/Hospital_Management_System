@@ -1,0 +1,41 @@
+
+<form class="form-container" [formGroup]="outPtPresccriptForm" (submit)="insert()">
+  <div class="f-w">
+    <h3>Create new Outptpresccript</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Medicine Name </mat-label>
+    <input matInput formControlName="medicineName" />
+    <mat-icon matSuffix>contact</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>testName</mat-label>
+    <input matInput formControlName="testName" />
+  </mat-form-field>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Instruction</mat-label>
+    <input matInput formControlName="instruction" />
+    <mat-icon matSuffix>phone</mat-icon>
+  </mat-form-field>
+
+
+ 
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Appoinment Id</mat-label>
+    <mat-select formControlName="appoinmentId">
+      <mat-option value="">None</mat-option>
+      <mat-option *ngFor="let c of appointment" [value]="c.appoinmentId">
+        {{c.appoinmentId}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="f-w">
+    <mat-checkbox style="margin:0 10px 15px 0;" formControlName="admitStatus">Admit Status</mat-checkbox>
+  </div>
+  <div class="f-w">
+    <button [disabled]="outPtPresccriptForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/OutPtPresccript']">Back to list</a>
+  </div>
+</form>

@@ -1,0 +1,63 @@
+<p>appoinment works!</p>
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title class="card-title">
+      Appoinment
+    </mat-card-title>
+    <mat-card-subtitle class="card-subtitle">
+      Appoinment for Patient
+    </mat-card-subtitle>
+    <span class="filter"></span>
+    <a [routerLink]="['/appoinment-create']" mat-mini-fab color="primary"><mat-icon>add</mat-icon></a>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <div class="table-container mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="appoinmentId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Appoinment Id</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.appoinmentId}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="patientName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>patient Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.patientName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="age">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>age</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.age}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>phone</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.phone}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="doctorId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Doctor Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{getDoctorName(element.doctorsId)}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="appointDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Appoinment Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.appointDate|date:'MMM dd,yyyy'}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="problem">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Problem</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.problem}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="serialNo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.serialNo}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button [routerLink]="['/appoinment-edit',element.appoinmentId]"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:columnList"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

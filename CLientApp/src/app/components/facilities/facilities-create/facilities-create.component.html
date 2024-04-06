@@ -1,0 +1,33 @@
+<p>facilities-create works!</p>
+
+<form class="form-container" [formGroup]="facilityForm" (ngSubmit)="insert()">
+  <div class="f-w">
+    <h3>Add new facility</h3>
+  </div>
+  <mat-form-field class="f-w">
+    <mat-label>Facility Name</mat-label>
+    <input matInput formControlName="facilityName" />
+    <mat-error *ngIf="f['facilityName'].touched && f['facilityName'].errors">Facility name required!!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="f-w">
+    <mat-label>Admission Id</mat-label>
+    <mat-select formControlName="addmisonId">
+      <mat-option *ngFor="let a of admission" [value]="a.admissionId">
+        {{a.admissionId}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="f['addmisonId'].touched && f['addmisonId'].errors">Admission Id required!!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="f-w">
+    <mat-label>Facility Price</mat-label>
+    <input matInput formControlName="facilityPrice" />
+    <mat-error *ngIf="f['facilityPrice'].touched && f['facilityPrice'].errors">Facility name required!!</mat-error>
+  </mat-form-field>
+  <div class="f-w">
+    <button [disabled]="facilityForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/facilities']">Back to list</a>
+  </div>
+</form>
+
